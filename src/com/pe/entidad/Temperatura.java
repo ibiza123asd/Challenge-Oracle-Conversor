@@ -1,5 +1,7 @@
 package com.pe.entidad;
 
+import java.text.DecimalFormat;
+
 public class Temperatura {
 
     private double valorTemperatura;
@@ -53,40 +55,53 @@ public class Temperatura {
         return valor;
     }
 
-    public double convertirCelsiusaFarehneit() {
+    public double convertirFormato(double valor) {
         double resultado;
-        resultado = (this.getValorTemperatura() * 9 / 5) + 32;
+        DecimalFormat dt = new DecimalFormat("#.00");
+        resultado = Double.parseDouble(dt.format(valor).replace(",", "."));
         return resultado;
+    }
+
+    public double convertirCelsiusaFarehneit() {
+        double resultado, resultadoF;
+        resultado = (this.getValorTemperatura() * 9 / 5) + 32;
+        resultadoF = this.convertirFormato(resultado);
+        return resultadoF;
     }
 
     public double convertirFarehnheitaCelsius() {
-        double resultado;
+        double resultado, resultadoF;
         resultado = (this.getValorTemperatura() - 32) / 1.8;
-        return resultado;
+        resultadoF = this.convertirFormato(resultado);
+        return resultadoF;
     }
 
     public double convertirKelvinaCelcius() {
-        double resultado;
+        double resultado, resultadoF;
         resultado = this.getValorTemperatura() - 273.15;
-        return resultado;
+        resultadoF = this.convertirFormato(resultado);
+        return resultadoF;
     }
 
     public double convertirCelciusaKelvin() {
-        double resultado;
+        double resultado, resultadoF;
         resultado = this.getValorTemperatura() + 273.15;
-        return resultado;
+        resultadoF = this.convertirFormato(resultado);
+        return resultadoF;
     }
 
     public double convertirFarehnheitaKelvin() {
-        double resultado;
+        double resultado, resultadoF;
         resultado = (5 * (this.getValorTemperatura() - 32)) / 9 + 273.15;
-        return resultado;
+        resultadoF = this.convertirFormato(resultado);
+        return resultadoF;
     }
 
     public double convertirKelvinaFarehnheit() {
-        double resultado;
+        double resultado, resultadoF;
         resultado = (1.8 * (this.getValorTemperatura() - 273.15)) + 32;
-        return resultado;
+        resultadoF = this.convertirFormato(resultado);
+        return resultadoF;
     }
 
 }
